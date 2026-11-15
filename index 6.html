@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Personal Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #FDF7FF;
+    --bg-light: #F8EEFF;
+    --card: #FFFFFF;
+    --primary: #C084FC;
+    --secondary: #D8B4FE;
+    --pink: #F9A8D4;
+    --pink-light: #FCE7F3;
+    --text: #49345E;
+    --muted: #927DA5;
+    --border: #EADCF5;
+    --shadow: 0 8px 25px rgba(164, 115, 199, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+section {
+    padding: 90px 8%;
+    scroll-margin-top: 75px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.section-title span {
+    color: #B56BE5;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 45px;
+}
+
+/* NAVIGATION */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(253, 247, 255, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: #A855D6;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #D66BAA;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 27px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text);
+}
+
+/* HOME */
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 45px;
+    padding-top: 120px;
+    background: linear-gradient(135deg, #FDF7FF, #FCE7F3, #F3E8FF);
+}
+
+.home-content {
+    flex: 1;
+    animation: slideLeft 1s ease;
+}
+
+.home-content h4 {
+    color: #B56BE5;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.home-content h1 {
+    font-size: clamp(35px, 5vw, 58px);
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.home-content h1 span {
+    color: #C084FC;
+}
+
+.home-content p {
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 550px;
+    margin-bottom: 25px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #C084FC, #F9A8D4);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(192, 132, 252, 0.3);
+}
+
+.btn-outline {
+    background: white;
+    color: #A855D6;
+    border: 2px solid #D8B4FE;
+}
+
+.home-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    animation: slideRight 1s ease;
+}
+
+.home-image img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 48% 48% 35% 35%;
+    border: 8px solid white;
+    box-shadow: 0 15px 40px rgba(192, 132, 252, 0.2);
+    background: #F3E8FF;
+}
+
+/* ABOUT */
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.about-image,
+.about-content {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+}
+
+.about-content h3 {
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.about-content p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+.info {
+    margin: 12px 0;
+    color: var(--muted);
+}
+
+.info strong {
+    color: var(--text);
+}
+
+/* EDUCATION */
+
+.education {
+    background: var(--bg-light);
+}
+
+.timeline {
+    max-width: 750px;
+    margin: auto;
+    border-left: 3px solid #D8B4FE;
+    padding-left: 30px;
+}
+
+.timeline-item {
+    background: white;
+    padding: 23px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -40px;
+    top: 25px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #F9A8D4;
+    border: 4px solid #E9D5FF;
+}
+
+.timeline-item h3 {
+    color: #A855D6;
+    margin-bottom: 7px;
+}
+
+.timeline-item p {
+    color: var(--muted);
+}
+
+/* SKILLS */
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.skill-card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    transition: 0.4s;
+}
+
+.skill-card:hover {
+    transform: translateY(-9px);
+    background: var(--pink-light);
+}
+
+.skill-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.skill-card h3 {
+    color: #A855D6;
+    margin-bottom: 8px;
+}
+
+.skill-card p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* PROJECTS */
+
+.projects {
+    background: var(--bg-light);
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: 0.4s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background: #E9D5FF;
+}
+
+.project-info {
+    padding: 22px;
+}
+
+.project-info h3 {
+    color: #A855D6;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* EXPERIENCE */
+
+.experience-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+}
+
+.experience-card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    border-bottom: 4px solid #F9A8D4;
+    transition: 0.3s;
+}
+
+.experience-card:hover {
+    transform: translateY(-7px);
+}
+
+.experience-card h3 {
+    color: #A855D6;
+    margin-bottom: 10px;
+}
+
+.experience-card p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* GALLERY */
+
+.gallery {
+    background: var(--bg-light);
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: 0.4s;
+    box-shadow: var(--shadow);
+    background: #E9D5FF;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.04);
+}
+
+/* CONTACT */
+
+.contact-container {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    background: #FDF7FF;
+    color: var(--text);
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+}
+
+.contact-container input:focus,
+.contact-container textarea:focus {
+    border-color: #C084FC;
+}
+
+.contact-container textarea {
+    height: 140px;
+    resize: vertical;
+}
+
+.contact-container button {
+    width: 100%;
+}
+
+/* FOOTER */
+
+footer {
+    background: #EBDDF7;
+    text-align: center;
+    padding: 25px;
+    color: #76578D;
+    font-size: 13px;
+}
+
+/* ANIMATIONS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+}
+
+@media(max-width: 768px) {
+    header {
+        padding: 15px 6%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        display: none;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: var(--shadow);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .home {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 130px;
+    }
+
+    .home-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .home-image img {
+        width: 230px;
+        height: 260px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 280px;
+    }
+
+    section {
+        padding: 75px 6%;
+    }
+
+    .section-title {
+        font-size: 29px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+    <a href="#home" class="logo">MyPortfolio.</a>
+
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section class="home" id="home">
+    <div class="home-content">
+        <h4>Hello, Welcome to My Portfolio!</h4>
+        <h1>I'm <span>Czarina Grace F. Geronca</span></h1>
+        
+        <p>
+            Welcome to my personal portfolio! I am Czarina Grace F. Geronca. This portfolio tells my story, including my background, experiences, interests, achievements, and dreams. It represents who I am as a person and how I continue to grow and learn through life’s challenges. Through this portfolio, I want to share my journey, goals, and the person I aspire to become.
+        </p>
+
+        <div class="buttons">
+            <a href="#about" class="btn">About Me</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+    </div>
+
+    <div class="home-image">
+        <img src="890293027_29521825180775085_8648290782258745146_n.jpg" alt="My Profile Photo">
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <p class="section-subtitle">Get to know me better</p>
+
+    <div class="about-container">
+        <div class="about-image">
+            <img src="121.jpg" alt="About Me Photo">
+        </div>
+
+        <div class="about-content">
+            <h3>Who Am I?</h3>
+
+            <p>
+                I am a student who believes that life is a journey full of lessons, challenges, and opportunities. I may not be perfect, but I always try my best to learn, improve, and become a better person.
+
+I believe that every experience helps shape who I am today. I am proud of myself because I continue to move forward and work hard for my dreams.
+            </p>
+
+            <div class="info"><strong>Name:</strong> Czarina Grace F. Geronca</div>
+            <div class="info"><strong>Course:</strong> BS Information Technology</div>
+            <div class="info"><strong>School:</strong> Binalbagan Catholic College</div>
+            <div class="info"><strong>Email:</strong> czarinageronca2@gmail.com</div>
+
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="education reveal">
+    <h2 class="section-title">My <span>Education</span></h2>
+    <p class="section-subtitle">My academic journey</p>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>College</h3>
+            <p>Binalbagan Catholic College</p>
+            <p>BS Information Technology</p>
+            <p>2025 - Present</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Senior High School</h3>
+            <p>Binalbagan National High School</p>
+            <p>HUMSS</p>
+            <p>2023-2024</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Junior High School</h3>
+            <p>Binalbagan National High School</p>
+            <p>2022-2023</p>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="reveal">
+    <h2 class="section-title">My <span>Skills</span></h2>
+    <p class="section-subtitle">Things I can do and continue learning</p>
+
+    <div class="skills-container">
+        <div class="skill-card">
+            <div class="skill-icon"></div>
+            <h3>Sport</h3>
+            <p>Takraw.</p>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon"></div>
+            <h3>Reading</h3>
+            <p>Book about Motivations.</p>
+        </div>
+
+
+        <div class="skill-card">
+            <div class="skill-icon"></div>
+            <h3>Online Games</h3>
+            <p>ML,COD</p>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects reveal">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <p class="section-subtitle">Some of my school and personal works</p>
+
+        <div class="project-card">
+            <img src="hsh.jpg" alt="Project Two">
+            <div class="project-info">
+                <h3>PEER OFFICER</h3>
+                <p> That leadership begins woth a heart that listen,serves and inspires.</p>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <img src="received_1542399030443583.jpeg" alt="Project Three">
+            <div class="project-info">
+                <h3>FRIENDSHIP</h3>
+                <p>Builds a stronger connection in my everyday life to communicate.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="reveal">
+    <h2 class="section-title">My <span>Experience</span></h2>
+    <p class="section-subtitle">My learning and activities</p>
+
+    <div class="experience-container">
+        <div class="experience-card">
+            <h3>School Activities</h3>
+            <p>
+                Participating in school activities and completing
+                different academic tasks with my classmates.
+            </p>
+        </div>
+
+        <div class="experience-card">
+            <h3>Group Projects</h3>
+            <p>
+                Working with group members, sharing ideas,
+                and learning how to complete projects together.
+            </p>
+        </div>
+
+        <div class="experience-card">
+            <h3>Web Development</h3>
+            <p>
+                Practicing HTML, CSS, and JavaScript to improve
+                my skills in creating websites.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery reveal">
+    <h2 class="section-title">My <span>Gallery</span></h2>
+    <p class="section-subtitle">Memories and special moments</p>
+
+    <div class="gallery-container">
+        <img src="GAL1.jpg" alt="Gallery Photo 1">
+        <img src="GAL2.jpg" alt="Gallery Photo 2">
+        <img src="GAL3.jpg" alt="Gallery Photo 3">
+        <img src="GAL4.jpg" alt="Gallery Photo 4">
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+    <p class="section-subtitle">Let's connect and communicate</p>
+
+    <form class="contact-container" id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Write your message..." required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© <span id="year"></span> Your Name | My Personal Portfolio</p>
+    <p>Made with 💜 and 🩷</p>
+</footer>
+
+<script>
+// MOBILE NAVIGATION
+const menuButton = document.querySelector(".menu-toggle");
+const navigation = document.querySelector(".nav-links");
+
+menuButton.addEventListener("click", function() {
+    navigation.classList.toggle("show");
+
+    const isOpen = navigation.classList.contains("show");
+    menuButton.setAttribute("aria-expanded", isOpen);
+    menuButton.textContent = isOpen ? "✕" : "☰";
+});
+
+// CLOSE MENU AFTER CLICKING A LINK
+document.querySelectorAll(".nav-links a").forEach(function(link) {
+    link.addEventListener("click", function() {
+        navigation.classList.remove("show");
+        menuButton.textContent = "☰";
+        menuButton.setAttribute("aria-expanded", "false");
+    });
+});
+
+// SCROLL REVEAL ANIMATION
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(function(element) {
+    observer.observe(element);
+});
+
+// AUTOMATIC YEAR
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// CONTACT FORM
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const receiverEmail = "your@email.com";
+
+    if (!name || !email || !subject || !message) {
+        alert("Please complete all fields.");
+        return;
+    }
+
+    const body = 
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n\n" +
+        "Message:\n" + message;
+
+    const mailLink =
+        "mailto:" + receiverEmail +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+
+    window.location.href = mailLink;
+});
+</script>
+
+</body>
+</html>
